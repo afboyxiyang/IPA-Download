@@ -3,7 +3,7 @@
 
 目前只支持 macOS 26+ 且配备 Apple 芯片的 Mac。由于作者暂无 Windows PC 设备，故暂时没有 Windows 版本开发计划。
 
-使用 SwiftUI 编译，完美适配 macOS 26 的液态玻璃效果。
+使用 SwiftUI 编译，完美适配 macOS 26 的 Liquid Glass 效果。
 
 # 如果你觉得使用 Pastel 感到开心，可以请我喝杯咖啡，谢谢！
 <img width="454" height="322" alt="image" src="https://github.com/user-attachments/assets/8b773cd2-2d4e-42b8-bcf4-d2bcf08e593c" />
