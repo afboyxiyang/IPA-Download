@@ -5,9 +5,6 @@
 
 使用 SwiftUI 编译，完美适配 macOS 26 的 Liquid Glass 效果。
 
-# 如果你觉得使用 Pastel 感到开心，可以请我喝杯咖啡 ☕️。
-<img width="454" height="322" alt="image" src="https://github.com/user-attachments/assets/8b773cd2-2d4e-42b8-bcf4-d2bcf08e593c" />
-
 # 主页面。
 你可以轻松使用 Pastel 在对应地区的 App Store 内查看并搜索 App。更强大的是，它能直接根据你选择的 Apple 账户地区自动选择商店。在切换地区时，还会自动切换到你已登陆并对应地区的 Apple 账户。甚至支持直接下载一款此 Apple 账户从未下载过的 App。
 
