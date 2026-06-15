@@ -4,9 +4,9 @@
         <title>Pastel</title>
         <item>
             <title>26.6</title>
-            <pubDate>Tue, 16 Jun 2026 00:22:19 +0800</pubDate>
-            <link>https://github.com/EEliberto/IPA-Download/releases/tag/Pastel4</link>
-            <sparkle:version>4</sparkle:version>
+            <pubDate>Tue, 16 Jun 2026 01:18:22 +0800</pubDate>
+            <link>https://github.com/EEliberto/IPA-Download/releases/tag/Pastel5</link>
+            <sparkle:version>5</sparkle:version>
             <sparkle:shortVersionString>26.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
@@ -136,7 +136,7 @@ Pastel 사용 중 문제가 있으면 GitHub에 Issue를 제출해 주세요.
 
 หากพบปัญหาระหว่างใช้งาน Pastel โปรดส่ง Issue บน GitHub
 ]]></description>
-            <enclosure url="https://github.com/EEliberto/IPA-Download/releases/download/Pastel4/Pastel-26.6-build-4.dmg" length="39242729" type="application/octet-stream" sparkle:edSignature="WAj4zDnA7jJX6Fo1I2/3emSpmTLXKsKyxypMwPUwGAQXUuW6hKzDjdINMbeOrcDy7grxhVqLDUJ2Js1SH1g9BA=="/>
+            <enclosure url="https://github.com/EEliberto/IPA-Download/releases/download/Pastel5/Pastel-26.6-build-5.dmg" length="51942958" type="application/octet-stream" sparkle:edSignature="LZctjoXrfyOVWBYC+u+9moHNgKnl/7XAPDoc8VxhCUFf9c4SvvMIW1tR9PT+sMVyr21epq8VOYgwdwUkXBHJCQ=="/>
         </item>
         <item>
             <title>26.5.2</title>

@@ -1607,9 +1607,6 @@ struct ContentView: View {
     }
     private func setNoUpdateEnabled(_ enabled: Bool, for record: VersionRecord) {
         noUpdateSelections[record.versionId.isEmpty ? record.id : record.versionId] = enabled
-        if selectedVersion?.id == record.id {
-            manualNoUpdate = enabled
-        }
     }
     private func downloadJobID(for record: VersionRecord, removesAppStoreUpdates: Bool) -> String {
         "\(record.id)-\(IPADownloadVariant(removeAppStoreUpdateMetadata: removesAppStoreUpdates).rawValue)"
@@ -2265,7 +2262,7 @@ struct ContentView: View {
                                     VersionSelectionRow(
                                         record: record,
                                         rowIndex: index,
-                                        isSelected: selectedVersion?.id == record.id,
+                                        isSelected: false,
                                         removesAppStoreUpdates: removesUpdates,
                                         isDownloading: downloads.isRunning(jobID),
                                         downloadProgress: downloads.job(jobID)?.progress,
@@ -2274,9 +2271,7 @@ struct ContentView: View {
                                         errorLog: downloads.job(jobID)?.log ?? "",
                                         downloadedURL: downloadedURL,
                                         appIcon: downloadedURL.flatMap { versionIcons[$0.path] },
-                                        onSelect: {
-                                            selectVersion(record)
-                                        },
+                                        onSelect: {},
                                         onToggleNoUpdate: { enabled in
                                             setNoUpdateEnabled(enabled, for: record)
                                         },
@@ -2801,7 +2796,7 @@ struct ContentView: View {
                                 VersionSelectionRow(
                                     record: record,
                                     rowIndex: index,
-                                    isSelected: selectedVersion?.id == record.id,
+                                    isSelected: false,
                                     removesAppStoreUpdates: removesUpdates,
                                     isDownloading: downloads.isRunning(jobID),
                                     downloadProgress: downloads.job(jobID)?.progress,
@@ -2810,9 +2805,7 @@ struct ContentView: View {
                                     errorLog: downloads.job(jobID)?.log ?? "",
                                     downloadedURL: downloadedURL,
                                     appIcon: downloadedURL.flatMap { versionIcons[$0.path] },
-                                    onSelect: {
-                                        selectVersion(record)
-                                    },
+                                    onSelect: {},
                                     onToggleNoUpdate: { enabled in
                                         setNoUpdateEnabled(enabled, for: record)
                                     },
@@ -2990,8 +2983,8 @@ struct ContentView: View {
                                 item: item,
                                 icon: versionIcons[item.id],
                                 rowIndex: index,
-                                isSelected: (selectedDownloadedItemID ?? group.items.first?.id) == item.id,
-                                onSelect: { selectedDownloadedItemID = item.id },
+                                isSelected: false,
+                                onSelect: {},
                                 onReveal: { revealInFinder(item.fileURL) },
                                 onAirDrop: { airDrop(item.fileURL) },
                                 onDelete: { deleteDownloaded(item.fileURL) }
@@ -3105,9 +3098,10 @@ struct ContentView: View {
                     downloadedHeaderColumn(String(localized: "地区"), width: columns.region)
                     downloadedHeaderColumn(String(localized: "Apple 账户"), width: columns.account)
                     Color.clear.frame(width: DownloadedVersionHistoryRow.accountToNoUpdatesGap, height: 1)
-                    downloadedHeaderColumn(String(localized: "不再更新"), width: columns.noUpdates)
-                    Color.clear.frame(width: DownloadedVersionHistoryRow.actionGap, height: 1)
-                    Color.clear.frame(width: DownloadedVersionHistoryRow.actionColumnWidth, height: 1)
+                    downloadedHeaderColumn(
+                        String(localized: "不再更新"),
+                        width: columns.noUpdates + DownloadedVersionHistoryRow.actionGap + DownloadedVersionHistoryRow.actionColumnWidth
+                    )
                 }
                 .padding(.horizontal, DownloadedVersionHistoryRow.rowHorizontalPadding)
                 .frame(width: proxy.size.width, height: 30, alignment: .leading)
@@ -3673,17 +3667,16 @@ struct ContentView: View {
                     versionHeaderColumn(String(localized: "大小"), width: columns.size)
                     HStack(spacing: 0) {
                         Color.clear
-                            .frame(width: VersionSelectionRow.noUpdatesHeaderInset, height: 1)
+                            .frame(width: VersionSelectionRow.noUpdatesHeaderInset(for: columns), height: 1)
                         Text(String(localized: "不再更新"))
                             .lineLimit(1)
                             .minimumScaleFactor(0.82)
                         Spacer(minLength: 0)
                     }
-                    .frame(width: columns.noUpdates, alignment: .leading)
-                    Color.clear
-                        .frame(width: VersionSelectionRow.actionGap, height: 1)
-                    Text("")
-                        .frame(width: VersionSelectionRow.actionColumnWidth)
+                    .frame(
+                        width: columns.noUpdates + VersionSelectionRow.actionGap + VersionSelectionRow.actionColumnWidth,
+                        alignment: .leading
+                    )
                 }
                 .padding(.horizontal, VersionSelectionRow.rowHorizontalPadding)
                 .frame(width: proxy.size.width, height: 30, alignment: .leading)
@@ -4804,9 +4797,6 @@ private struct DownloadedVersionHistoryRow: View {
         .frame(maxWidth: .infinity, minHeight: 46, maxHeight: 46, alignment: .leading)
         .background(rowFill, in: RoundedRectangle(cornerRadius: 11, style: .continuous))
         .contentShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
-        .onTapGesture {
-            onSelect()
-        }
         .onHover { isHovered = $0 }
     }
 
@@ -5273,9 +5263,9 @@ struct VersionSelectionRow: View {
     static let versionIDColumnWidth: CGFloat = 178
     static let sizeColumnWidth: CGFloat = 118
     static let noUpdatesColumnWidth: CGFloat = 112
-    static let noUpdatesHeaderInset: CGFloat = 20
     static let noUpdatesToggleTrailingInset: CGFloat = 8
     static let noUpdatesSwitchApproxWidth: CGFloat = 48
+    static let noUpdatesHeaderDividerGap: CGFloat = 8
     static let actionGap: CGFloat = 12
     static var actionColumnWidth: CGFloat {
         usesWideDownloadButton ? 112 : 96
@@ -5318,10 +5308,14 @@ struct VersionSelectionRow: View {
         )
     }
 
+    static func noUpdatesHeaderInset(for columns: Columns) -> CGFloat {
+        max(0, columns.noUpdates - noUpdatesToggleTrailingInset - noUpdatesSwitchApproxWidth)
+    }
+
     static func visualDividerOffsets(for columns: Columns) -> [CGFloat] {
         let start = rowHorizontalPadding + iconColumnWidth
         let visualShift: CGFloat = 7
-        let noUpdatesDividerInset: CGFloat = 12
+        let noUpdatesDividerInset = max(12, noUpdatesHeaderInset(for: columns) - noUpdatesHeaderDividerGap)
         return [
             start + columns.version - visualShift,
             start + columns.version + columns.versionID - visualShift,
@@ -5381,7 +5375,6 @@ struct VersionSelectionRow: View {
                         get: { removesAppStoreUpdates },
                         set: { enabled in
                             withAnimation(.smooth(duration: 0.22)) {
-                                onSelect()
                                 onToggleNoUpdate(enabled)
                             }
                         }
@@ -5406,9 +5399,6 @@ struct VersionSelectionRow: View {
         .frame(maxWidth: .infinity, minHeight: 46, maxHeight: 46, alignment: .leading)
         .background(rowFill, in: RoundedRectangle(cornerRadius: 11, style: .continuous))
         .contentShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
-        .onTapGesture {
-            onSelect()
-        }
         .onHover { isHovered = $0 }
     }
 
