@@ -307,6 +307,9 @@
         }
       }
     },
+    "%lld%%" : {
+
+    },
     "Agzy" : {
       "localizations" : {
         "en" : {
@@ -490,6 +493,9 @@
         }
       }
     },
+    "Apple 服务器暂时不可用。请稍后再试。" : {
+
+    },
     "Apple 账户" : {
       "localizations" : {
         "en" : {
@@ -529,6 +535,9 @@
           }
         }
       }
+    },
+    "Apple 账户会话已失效。请重新登录后再试。" : {
+
     },
     "Apple 账户密码" : {
       "localizations" : {
@@ -609,6 +618,9 @@
           }
         }
       }
+    },
+    "Apple 账户或密码不正确。请检查后再试。" : {
+
     },
     "Bilin" : {
       "localizations" : {
@@ -711,6 +723,9 @@
           }
         }
       }
+    },
+    "IPA 文件处理失败。请重新下载后再试。" : {
+
     },
     "Keychain %@ 失败：%lld" : {
       "localizations" : {
@@ -1065,6 +1080,7 @@
       }
     },
     "下载失败，暂无详细日志。" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1206,6 +1222,12 @@
           }
         }
       }
+    },
+    "下载未能完成。" : {
+
+    },
+    "下载未能完成。请稍后再试。" : {
+
     },
     "下载此 ID" : {
       "extractionState" : "stale",
@@ -1872,6 +1894,9 @@
           }
         }
       }
+    },
+    "全部下载" : {
+
     },
     "关于" : {
       "localizations" : {
@@ -4613,6 +4638,7 @@
       }
     },
     "打包中" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5281,6 +5307,9 @@
           }
         }
       }
+    },
+    "无法连接 Apple 服务器。请检查网络连接后再试。" : {
+
     },
     "日志" : {
       "localizations" : {
@@ -6701,6 +6730,7 @@
       }
     },
     "正在校验并打包" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6893,6 +6923,43 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此 Apple 帳戶已經存在。"
+          }
+        }
+      }
+    },
+    "此 Apple 账户暂时无法获取该 App。请确认账号已拥有此 App 后再试。" : {
+
+    },
+    "此 Apple 账户未拥有此 App，是否从 Apple 获取此 App？" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This Apple Account does not own this app. Get this app from Apple?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このAppleアカウントはこのAppを所有していません。AppleからこのAppを入手しますか？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 Apple 계정은 이 App을 보유하고 있지 않습니다. Apple에서 이 App을 받으시겠습니까?"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บัญชี Apple นี้ยังไม่มี App นี้ ต้องการรับ App นี้จาก Apple หรือไม่?"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此 Apple 帳戶未擁有此 App，是否從 Apple 取得此 App？"
           }
         }
       }
@@ -8154,6 +8221,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自動更新框架"
+          }
+        }
+      }
+    },
+    "获取" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入手"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "받기"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รับ"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取得"
           }
         }
       }
@@ -9547,6 +9648,43 @@
         }
       }
     },
+    "需要完成 Apple 账户双重认证。请输入验证码后继续。" : {
+
+    },
+    "需要获取 App" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get App Required"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appの入手が必要です"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 받기 필요"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ต้องรับ App ก่อน"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "需要取得 App"
+          }
+        }
+      }
+    },
     "需要重新启动" : {
       "localizations" : {
         "en" : {
@@ -9626,6 +9764,9 @@
           }
         }
       }
+    },
+    "验证码不正确或已过期。请重新获取后再试。" : {
+
     },
     "验证码已发送至你的受信任 Apple 设备，请输入双重认证验证码：" : {
       "extractionState" : "stale",

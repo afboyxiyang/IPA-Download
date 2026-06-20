@@ -165,6 +165,13 @@ export class Ipa {
             if (!(await this.isFreeApp(APPID))) {
                 throw new Error(t('paid_not_purchased'));
             }
+            if (process.env.IPA_ALLOW_APP_ACQUIRE !== '1') {
+                return {
+                    appId: String(APPID),
+                    requiresAcquisition: true,
+                    versionIds: [],
+                };
+            }
             await Store.purchase(APPID, '', this.auth);
             song = await Store.AppInfo(APPID, '', this.auth);
         }
